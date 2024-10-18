@@ -1,2 +1,2 @@
 # DSA
-DSA practice
+DSA Chapterwise Problems and Solutions 
