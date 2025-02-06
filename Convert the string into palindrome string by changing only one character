@@ -1,0 +1,22 @@
+class Solution {
+    char[] charArr;
+    public boolean validPalindrome(String S) {
+        charArr=S.toCharArray();
+        int count =0;
+        for(int i=0, j=charArr.length-1;i<j; i++, j--){
+            if(charArr[i]!=charArr[j]){
+               if(check(i+1,j)||check(i,j-1))
+                    count
+            }
+        }
+        return true;
+    }
+    public boolean check(int p1,int p2){
+     for (; p1 < p2; ++p1, --p2) {
+        if(charArr[p1]!=charArr[p2]){
+            return false;
+        }
+     }
+        return true;
+    }
+}
