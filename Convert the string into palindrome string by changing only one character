@@ -2,11 +2,9 @@ class Solution {
     char[] charArr;
     public boolean validPalindrome(String S) {
         charArr=S.toCharArray();
-        int count =0;
         for(int i=0, j=charArr.length-1;i<j; i++, j--){
             if(charArr[i]!=charArr[j]){
-               if(check(i+1,j)||check(i,j-1))
-                    count
+               return check(i+1,j)||check(i,j-1);
             }
         }
         return true;
