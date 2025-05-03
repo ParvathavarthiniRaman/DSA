@@ -1,0 +1,15 @@
+class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        def dfs (currentCity):
+            visited[currentCity]=True
+            for adjcity,connected in enumerate (isConnected[currentCity]):
+                if not visited[adjcity] and connected : 
+                    dfs(adjcity)
+        
+        visited=[False] * len(isConnected)
+        numberofProvinces=0
+        for city in range(len(isConnected)):
+            if not visited[city] :
+                dfs(city)
+                numberofProvinces+=1
+        return numberofProvinces
