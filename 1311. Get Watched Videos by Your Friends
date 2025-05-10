@@ -1,0 +1,32 @@
+class Solution:
+    def watchedVideosByFriends(self, watchedVideos: List[List[str]], friends: List[List[int]], id: int, level: int) -> List[str]:
+        visited =[False] * len(friends)
+        q= deque()
+        q.append([id,0])
+        visited[id] = True
+        level_k_people = []
+        lev=1
+        while q :
+            node,lev=q.popleft()
+            if lev==level:
+                level_k_people.append(node)
+            # 👇 Don't enqueue their friends (we want exactly level `k`)
+            if lev < level :
+                for friend in friends[node]:
+                    if not visited[friend] :
+                        visited[friend] = True
+                        q.append([friend,lev+1])
+                        print(f"➡️  Adding Friend {friend} to queue with Level {lev + 1}")
+                        #print(level_k_people)
+        videos_freq=defaultdict(int)
+        print(level_k_people)
+        for ppl in level_k_people:
+            print(ppl)
+            for video in watchedVideos[ppl]:
+                videos_freq[video]+=1
+        
+        sorted_videos=sorted(videos_freq.items(),key=lambda x :(x[1],x[0]))
+        return [video for video, _ in sorted_videos]
+
+
+                
