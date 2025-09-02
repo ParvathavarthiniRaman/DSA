@@ -1,0 +1,17 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        l=0 #left pointer
+        longest=0  # Longest char length
+        dupset=set() # hash set to keep track of the chars without dups
+        for r in range(len(s)): # right pointer 
+            while s[r] in dupset: 
+                dupset.remove(s[l]) # remove the left 
+                l+=1
+            longest=max(longest,(r-l)+1)
+            dupset.add(s[r]) # add the right 
+        return longest
+#time complexity: o(n)
+# set operations take only o(1) for remove opeeration
+#space complexity : o(n)
+
+
